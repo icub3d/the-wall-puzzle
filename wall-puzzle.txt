@@ -1,0 +1,8 @@
+s red:a
+a red:s red:e blue:e blue:b
+b blue:a blue:e red:c
+c red:b blue:c red:d red:f
+d red:c red:e blue:e
+e red:a blue:a blue:t blue:f red:d blue:d blue:b
+f blue:e red:c
+t blue:e
