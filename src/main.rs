@@ -3,7 +3,7 @@ use std::{collections::HashMap, fmt::Display, fs::read_to_string, str::FromStr};
 use clap::Parser;
 use nom::{
     bytes::complete::tag,
-    character::complete::{alpha1, space1},
+    character::complete::{alpha1, line_ending, space1},
     multi::{separated_list0, separated_list1},
     Finish, IResult,
 };
@@ -76,7 +76,7 @@ impl FromStr for Puzzle {
 impl Puzzle {
     /// Parse a puzzle from a string.
     fn parse_puzzle(input: &str) -> IResult<&str, Puzzle> {
-        let (input, nodes) = separated_list0(tag("\n"), Puzzle::parse_node)(input)?;
+        let (input, nodes) = separated_list0(line_ending, Puzzle::parse_node)(input)?;
         Ok((
             input,
             Puzzle {
