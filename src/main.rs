@@ -116,17 +116,8 @@ impl Puzzle {
             let edges = self.nodes.get(&edge.node).unwrap();
             edges
                 .iter()
-                .filter_map(|Edge { color, node }| {
-                    if *color == Color::None || edge.color != *color {
-                        Some(Edge {
-                            color: *color,
-                            node: node.clone(),
-                        })
-                    } else {
-                        None
-                    }
-                })
-                .map(|edge| (edge, 1))
+                .filter(|Edge { color, .. }| *color == Color::None || edge.color != *color)
+                .map(|edge| (edge.clone(), 1))
                 .collect::<Vec<(Edge, usize)>>()
         };
 
